@@ -118,7 +118,38 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"js/index.js":[function(require,module,exports) {
+var signupInputs = document.querySelectorAll('.signup__input');
 
+function displayError(input, message) {
+  var field = input.closest('.signup__field');
+  var errorMsg = field.querySelector('.signup__error');
+  errorMsg.innerText = "".concat(message);
+  errorMsg.classList.add('signup__error--active');
+  input.classList.add('signup__input--invalid');
+}
+
+function validateInputs() {
+  var _this$validity = this.validity,
+      valueMissing = _this$validity.valueMissing,
+      typeMismatch = _this$validity.typeMismatch,
+      tooShort = _this$validity.tooShort;
+
+  if (valueMissing) {
+    displayError(this, 'This field is required');
+  }
+
+  if (typeMismatch) {
+    displayError(this, 'Please enter a valid e-mail');
+  }
+
+  if (tooShort) {
+    displayError(this, "".concat(this.name, " should be at least ").concat(this.minLength, " chars long"));
+  }
+}
+
+signupInputs.forEach(function (input) {
+  return input.addEventListener('invalid', validateInputs);
+});
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
