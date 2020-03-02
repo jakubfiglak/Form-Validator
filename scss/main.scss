@@ -8,7 +8,7 @@
 
 html {
   font-family: $font-stack;
-  font-size: 10px;
+  font-size: 15px;
 }
 
 .container {
@@ -60,9 +60,18 @@ html {
       color: $color-accent-blue;
     }
 
-    &:not(:placeholder-shown) + .signup__label {
+    &:not(:placeholder-shown):not(:focus) + .signup__label {
       bottom: 3rem;
       color: $color-gray-dark;
     }
+  }
+
+  &__error {
+    position: absolute;
+    bottom: -1.5rem;
+    left: 1rem;
+    color: $color-red;
+    font-style: italic;
+    opacity: 0;
   }
 }
