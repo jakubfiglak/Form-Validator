@@ -10,13 +10,16 @@
   <body>
     <div class="container">
       <h2 class="heading">Sign Up Form</h2>
-      <form class="signup" autocomplete="off">
+      <form class="signup" id="signup" autocomplete="off">
         <fieldset class="signup__field">
           <input
             type="text"
             class="signup__input"
             name="username"
             placeholder=" "
+            required
+            minlength="4"
+            maxlength="20"
           />
           <label for="username" class="signup__label">username</label>
           <small class="signup__error">This field is required</small>
@@ -26,6 +29,7 @@
             type="email"
             class="signup__input"
             name="email"
+            required
             placeholder=" "
           />
           <label for="email" class="signup__label">email</label>
@@ -36,6 +40,7 @@
             type="password"
             class="signup__input"
             name="password"
+            required
             placeholder=" "
           />
           <label for="password" class="signup__label">password</label>

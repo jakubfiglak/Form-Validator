@@ -50,6 +50,10 @@ html {
     font-size: 1.3rem;
     width: 300px;
 
+    &--invalid {
+      border-block-end: 1px solid $color-red;
+    }
+
     &:focus {
       outline: 0;
       border-block-end: 1px solid $color-gray-dark;
@@ -73,5 +77,10 @@ html {
     color: $color-red;
     font-style: italic;
     opacity: 0;
+    transition: opacity 0.2s ease-in;
+
+    &--active {
+      opacity: 1;
+    }
   }
 }

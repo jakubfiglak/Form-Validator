@@ -66,6 +66,9 @@ html {
   font-size: 1.3rem;
   width: 300px;
 }
+.signup__input--invalid {
+  border-block-end: 1px solid #f7685b;
+}
 .signup__input:focus {
   outline: 0;
   border-block-end: 1px solid #818e9b;
@@ -85,6 +88,10 @@ html {
   color: #f7685b;
   font-style: italic;
   opacity: 0;
+  transition: opacity 0.2s ease-in;
+}
+.signup__error--active {
+  opacity: 1;
 }
 
 /*# sourceMappingURL=/main.77bb5cfd.css.map */
