@@ -26,7 +26,7 @@
 
 html {
   font-family: "Poppins", sans-serif;
-  font-size: 10px;
+  font-size: 15px;
 }
 
 .container {
@@ -74,9 +74,17 @@ html {
   bottom: 3rem;
   color: #109cf1;
 }
-.signup__input:not(:placeholder-shown) + .signup__label {
+.signup__input:not(:placeholder-shown):not(:focus) + .signup__label {
   bottom: 3rem;
   color: #818e9b;
+}
+.signup__error {
+  position: absolute;
+  bottom: -1.5rem;
+  left: 1rem;
+  color: #f7685b;
+  font-style: italic;
+  opacity: 0;
 }
 
 /*# sourceMappingURL=/main.77bb5cfd.css.map */
