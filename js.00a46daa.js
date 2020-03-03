@@ -145,7 +145,6 @@ function displaySuccess(input) {
 
 function validateInput() {
   clearPrevState(this);
-  console.log(this.validity);
   var _this$validity = this.validity,
       valid = _this$validity.valid,
       valueMissing = _this$validity.valueMissing,
