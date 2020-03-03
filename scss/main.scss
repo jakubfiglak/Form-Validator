@@ -54,6 +54,10 @@ html {
       border-block-end: 1px solid $color-red;
     }
 
+    &--valid {
+      border-block-end: 1px solid $color-green;
+    }
+
     &:focus {
       outline: 0;
       border-block-end: 1px solid $color-gray-dark;
