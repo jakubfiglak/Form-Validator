@@ -25,7 +25,7 @@ function displaySuccess(input) {
 
 function validateInput() {
   clearPrevState(this);
-  console.log(this.validity);
+
   const {
     valid,
     valueMissing,
