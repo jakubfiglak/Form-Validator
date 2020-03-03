@@ -122,7 +122,6 @@ var signupInputs = document.querySelectorAll('.signup__input');
 
 function clearPrevState(input) {
   if (input.classList.contains('signup__input--invalid')) {
-    console.log('input invalid change');
     var field = input.closest('.signup__field');
     var errorMsg = field.querySelector('.signup__error');
     errorMsg.classList.remove('signup__error--active');
@@ -146,11 +145,13 @@ function displaySuccess(input) {
 
 function validateInput() {
   clearPrevState(this);
+  console.log(this.validity);
   var _this$validity = this.validity,
       valid = _this$validity.valid,
       valueMissing = _this$validity.valueMissing,
       typeMismatch = _this$validity.typeMismatch,
-      tooShort = _this$validity.tooShort;
+      tooShort = _this$validity.tooShort,
+      patternMismatch = _this$validity.patternMismatch;
 
   if (valid) {
     displaySuccess(this);
@@ -165,6 +166,10 @@ function validateInput() {
 
     if (tooShort) {
       displayError(this, "".concat(this.name, " should be at least ").concat(this.minLength, " chars long"));
+    }
+
+    if (patternMismatch) {
+      displayError(this, "".concat(this.name, " should contain at least ").concat(this.title));
     }
   }
 }
@@ -201,7 +206,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57163" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59953" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

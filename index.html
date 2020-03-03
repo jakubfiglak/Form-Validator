@@ -42,22 +42,12 @@
             name="password"
             required
             placeholder=" "
+            pattern="^(?=.{10,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$"
+            title="1 uppercase, 1 lowercase, 1 digit, 1 special character, length of 10"
           />
           <label for="password" class="signup__label">password</label>
           <small class="signup__error">This field is required</small>
         </fieldset>
-        <!-- <fieldset class="signup__field">
-          <input
-            type="password"
-            class="signup__input"
-            name="confirm-password"
-            placeholder=" "
-          />
-          <label for="confirm-password" class="signup__label"
-            >confirm password</label
-          >
-          <small class="signup__error">This field is required</small>
-        </fieldset> -->
         <input type="submit" value="submit" class="btn" />
       </form>
     </div>

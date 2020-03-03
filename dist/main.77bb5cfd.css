@@ -58,6 +58,7 @@ html {
   bottom: 0.7rem;
   left: 1rem;
   transition: all 0.2s ease-in;
+  pointer-events: none;
 }
 .signup__input {
   padding: 0.7rem 1rem;
@@ -86,7 +87,7 @@ html {
 }
 .signup__error {
   position: absolute;
-  bottom: -1.5rem;
+  top: 3.2rem;
   left: 1rem;
   color: #f7685b;
   font-style: italic;

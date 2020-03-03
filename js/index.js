@@ -2,7 +2,6 @@ const signupInputs = document.querySelectorAll('.signup__input');
 
 function clearPrevState(input) {
   if (input.classList.contains('signup__input--invalid')) {
-    console.log('input invalid change');
     const field = input.closest('.signup__field');
     const errorMsg = field.querySelector('.signup__error');
     errorMsg.classList.remove('signup__error--active');
@@ -26,7 +25,14 @@ function displaySuccess(input) {
 
 function validateInput() {
   clearPrevState(this);
-  const { valid, valueMissing, typeMismatch, tooShort } = this.validity;
+  console.log(this.validity);
+  const {
+    valid,
+    valueMissing,
+    typeMismatch,
+    tooShort,
+    patternMismatch,
+  } = this.validity;
 
   if (valid) {
     displaySuccess(this);
@@ -42,6 +48,9 @@ function validateInput() {
         this,
         `${this.name} should be at least ${this.minLength} chars long`
       );
+    }
+    if (patternMismatch) {
+      displayError(this, `${this.name} should contain at least ${this.title}`);
     }
   }
 }
