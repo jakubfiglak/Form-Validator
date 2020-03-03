@@ -69,6 +69,9 @@ html {
 .signup__input--invalid {
   border-block-end: 1px solid #f7685b;
 }
+.signup__input--valid {
+  border-block-end: 1px solid #2ed47a;
+}
 .signup__input:focus {
   outline: 0;
   border-block-end: 1px solid #818e9b;

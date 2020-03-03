@@ -120,6 +120,18 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 })({"js/index.js":[function(require,module,exports) {
 var signupInputs = document.querySelectorAll('.signup__input');
 
+function clearPrevState(input) {
+  if (input.classList.contains('signup__input--invalid')) {
+    console.log('input invalid change');
+    var field = input.closest('.signup__field');
+    var errorMsg = field.querySelector('.signup__error');
+    errorMsg.classList.remove('signup__error--active');
+    input.classList.remove('signup__input--invalid');
+  } else if (input.classList.contains('signup__input--valid')) {
+    input.classList.remove('signup__input--valid');
+  }
+}
+
 function displayError(input, message) {
   var field = input.closest('.signup__field');
   var errorMsg = field.querySelector('.signup__error');
@@ -128,27 +140,38 @@ function displayError(input, message) {
   input.classList.add('signup__input--invalid');
 }
 
-function validateInputs() {
+function displaySuccess(input) {
+  input.classList.add('signup__input--valid');
+}
+
+function validateInput() {
+  clearPrevState(this);
   var _this$validity = this.validity,
+      valid = _this$validity.valid,
       valueMissing = _this$validity.valueMissing,
       typeMismatch = _this$validity.typeMismatch,
       tooShort = _this$validity.tooShort;
 
-  if (valueMissing) {
-    displayError(this, 'This field is required');
-  }
+  if (valid) {
+    displaySuccess(this);
+  } else {
+    if (valueMissing) {
+      displayError(this, 'This field is required');
+    }
 
-  if (typeMismatch) {
-    displayError(this, 'Please enter a valid e-mail');
-  }
+    if (typeMismatch) {
+      displayError(this, 'Please enter a valid e-mail');
+    }
 
-  if (tooShort) {
-    displayError(this, "".concat(this.name, " should be at least ").concat(this.minLength, " chars long"));
+    if (tooShort) {
+      displayError(this, "".concat(this.name, " should be at least ").concat(this.minLength, " chars long"));
+    }
   }
 }
 
 signupInputs.forEach(function (input) {
-  return input.addEventListener('invalid', validateInputs);
+  input.addEventListener('invalid', validateInput);
+  input.addEventListener('blur', validateInput);
 });
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -178,7 +201,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60120" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57163" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
